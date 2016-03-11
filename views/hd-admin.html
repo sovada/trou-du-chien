@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-app = "admin">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.4/angular.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.4/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="../js/app.js"></script>
+        <script type="text/javascript" src="../js/connexion.js"></script>
+    </head>
+
+    <body>
+        <header>
+
+            <div class="navbar navbar-default " role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header col-md-4"><a class="navbar-brand" href="#">Trou du chien</a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-menubuilder">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <a href="../index.html">Accueil</a>
+                            </li>
+
+                            <li>
+                                <a href="../index.html#contact">Contact</a>
+                            </li>
+
+                            <li>
+                                <a href="../index.html#event">Evènements</a>
+                            </li>
+
+                            <li>
+                                <a href="galerie.html">Galerie de photo</a>
+                            </li>
+
+                            <li>
+                                <a href="hd-admin.html" class="activeItem">Connexion</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Harmony-Dev Administration<br></h1>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div><div class="section" ng-controller="adminController">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group"><div class="col-sm-2">
+                                <label for="inputEmail3" class="control-label">Email</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3" placeholder="Email" ng-model="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label for="inputPassword3" class="control-label">Mot de passe</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Mot de passe" ng-model="password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default" ng-click="connexion()">Connexion<br></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer id ="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="text-success">Trou du chients</h1>
+                        <p class="text-success">Bienvenu sur le site web de la pêcherie du trou des chiens,<br /> vous pourrez ici découvrir les différents services qu'on vous propose.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;La pêche, plus qu'une passion.</p>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1858.956880970786!2d5.347174628696751!3d50.03032346444617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c02dc5abff7c75%3A0x16dd2748d305dd24!2sRue+de+Lorcy%2C+6870+Saint-Hubert!5e0!3m2!1sfr!2sbe!4v1442655804150" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-12 text-left">
+                                <h1 class="text-success">Informations complémentaires</h1>
+                                <p><span class="text-success">Téléphonne:</span> 0467/32.54.12</p>
+                                <p><span class="text-success">Adresse:</span> Rue de Lorcy, 6870 Saint-Hubert</p>
+                            </div>
+                            <div class="col-md-12 text-left">
+                                <h1 class="text-success">Plan du site</h1>
+                                <a href="../index.html#home">Accueil</p>
+                                <a href="galerie.html">Galerie de photo</p>
+                                <a href="../index.html#event">Evenements</p>
+                                <a href="../index.html#contact">contact</p>
+                            </div>
+                            <br />
+                            <div class="col-md-12 text-left">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-center text-inverse"><a href="http://www.harmony-dev.biz">Devlopped by Harmony-Dev.</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

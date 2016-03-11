@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="styles/main.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.4/angular.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.4/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="js/slider.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/eventController.js"></script>
+        <script type="text/javascript" src="js/sectionController.js"></script>
+        <script type="text/javascript" src="js/prixController.js"></script>
+        <script type="text/javascript" src="js/horaireController.js"></script>
+        <script type="text/javascript" src="js/logoutController.js"></script>
+
+    </head>
+
+    <body id ="home">
+        <header>
+
+            <div class="navbar navbar-default " role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header col-md-4"><a class="navbar-brand" href="#">Trou du chien</a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-menubuilder">
+                        <ul class="nav navbar-nav navbar-left" ng-controller="logout">
+                            <li>
+                                <a href="#" class="activeItem">Accueil</a>
+                            </li>
+
+                            <li>
+                                <a href="#contact">Contact</a>
+                            </li>
+
+                            <li>
+                                <a href="#event">Evènements</a>
+                            </li>
+
+                            <li>
+                                <a href="views/galerie.html">Galerie de photo</a>
+                            </li>
+
+                            <li id = "connected">
+                                <a href="views/hd-admin.html">Connexion</a>
+                            </li>
+
+                            <li id = "disconected">
+                                <a ng-click="logout()" href="views/bye.html" id="logout">Déconnexion</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner">
+                <ul>
+                    <li style="background-image: url('img/slider1.jpeg');background-position:top;"><div class="sliderTexte">Nore étang est entretenu tous les jours.</div></li>
+                    <li style="background-image: url('img/slider2.JPG'); background-position:center;"><div class="sliderTexte">Vous pourrez vous désaltérer et combler votre faim.</div></li>
+                    <li style="background-image: url('img/slider3.JPG'); background-position:center;"><div class="sliderTexte">Beaucoup de pêcheurs nous rendent déjà visite.</div></li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <article ng-controller= "sectionController" style="margin-top:1%;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="img/img1.JPG" class="img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="text-success" ng-click="titlePressed()">{{ titre }}</h3>
+                        <p ng-click="contenuPressed()">{{ contenu }}</p>
+
+                        <div id="modalTitre" class="modalTitreSection">
+                            <form>
+                                <textarea id="sectionTitre" ng-model="titleModal" class="form-control" rows="5"></textarea>
+                                <button id="titreButton" ng-click="updateTitle()" class="btn btn-default">Modifié le titre.</button>
+                            </form>
+                        </div>
+
+                        <div id="modalContenu" class="modalContentSection">
+                            <form>
+                                <textarea id="sectionContenu" ng-model="contenuModal" class="form-control" rows="5"></textarea>
+                                <button id="contenuButton" ng-click="updateContenu()" class="btn btn-default">Modifié le contenu.</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </article>
+
+            <hr />
+            <article ng-controller="horaireController">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="text-success">Horaires</h1>
+                        <h3>Heures d'ouverture&nbsp;</h3>
+
+                        <table class="table table-condensed table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Jours</th>
+                                <th>Ouverture</th>
+                                <th>Fermeture</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Lundi</td>
+                                <td ng-click="horairePressed('ouverture', 'lundi')">{{ lundiOuverture }}</td>
+                                <td ng-click="horairePressed('fermeture', 'lundi')">{{ lundiFermeture }}</td>
+                            </tr>
+                            <tr>
+                                <td>Mardi</td>
+                                <td ng-click="horairePressed('ouverture', 'mardi')">{{ mardiOuverture }}</td>
+                                <td ng-click="horairePressed('fermeture', 'mardi')">{{ mardiFermeture }}</td>
+                            </tr>
+                            <tr>
+                                <td>Mercredi</td>
+                                <td ng-click="horairePressed('ouverture', 'mercredi')">{{ mercrediOuverture }}</td>
+                                <td ng-click="horairePressed('fermeture', 'mercredi')">{{ mercrediFermeture }}</td>
+                            </tr>
+                            <tr>
+                                <td>Jeudi</td>
+                                <td ng-click="horairePressed('ouverture', 'jeudi')">{{ jeudiOuverture }}</td>
+                                <td ng-click="horairePressed('fermeture', 'jeudi')">{{ jeudiFermeture }}</td>
+                            </tr>
+                            <tr>
+                                <td>Vendredi</td>
+                                <td ng-click="horairePressed('ouverture', 'vendredi')">{{ vendrediOuverture }}</td>
+                                <td ng-click="horairePressed('fermeture', 'vendredi')">{{ vendrediFermeture }}</td>
+                            </tr>
+                            <tr>
+                                <td>Samedi</td>
+                                <td ng-click="horairePressed('ouverture', 'samedi')">{{ samediOuverture }}</td>
+                                <td ng-click="horairePressed('fermeture', 'samedi')">{{ samediFermeture }}</td>
+                            </tr>
+                            <tr>
+                                <td>Dimanche</td>
+                                <td ng-click="horairePressed('ouverture', 'dimanche')">{{ dimancheOuverture }}</td>
+                                <td ng-click="horairePressed('fermeture', 'dimanche')">{{ dimancheFermeture }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div id="modalHoraire" class="modalHoraire">
+                            <form>
+                                <input type="text" id="horaire" ng-model="horaireModel" class="form-control" />
+                                <button id="titreButton" ng-click="updateHoraire()" class="btn btn-default">Modifié l'horaire.</button>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <img src="img/img2.JPG" class="img-responsive">
+                    </div>
+                </div>
+            </article>
+
+            <hr />
+
+            <article ng-controller="prixController">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="img/img3.JPG" class="img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="text-success">Tarifs</h1>
+                        <h3>Déversement de truites</h3>
+                        <p>Deux fois par jours.</p>
+                        <h4>Deux cannes maximum par pêcheur</h4>
+                        <table class="table table-bordered table-condensed table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Formules</th>
+                                <th>Tarifs</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1/2 &nbsp;Journée adulte</td>
+                                <td ng-click="pricePressed(1)">{{ prix1 }}€</td>
+                            </tr>
+                            <tr>
+                                <td>1/2 Journée enfant</td>
+                                <td ng-click="pricePressed(2)">{{ prix2 }}€</td>
+                            </tr>
+                            <tr>
+                                <td>1 Journée adulte</td>
+                                <td ng-click="pricePressed(3)">{{ prix3 }}€</td>
+                            </tr>
+                            <tr>
+                                <td>1 Journée enfant</td>
+                                <td ng-click="pricePressed(4)">{{ prix4 }}€</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div id="modalPrice" class="modalEvent">
+                            <form>
+                                <input type="text" id="price" ng-model="priceModel" class="form-control" />
+                                <button id="eventButton" ng-click="updatePrice()" class="btn btn-default">Modifié le prix.</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </article>
+            <div ng-controller = "eventController" style="margin-top:2%;">
+
+                <div ng-repeat="data in testEvent">
+                    <h1>Even</h1>
+                    <p>{{data.content}}</p>
+                    <p>{{data.id}}</p>
+                </div>
+
+            <article>
+                <div class="section" id="event">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Calendrier des évènements pour {{ month }}</h1>
+                                <h3><?php $date = date("F / Y"); echo $date; ?></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-hover table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td id = "jour1" ng-click="jourPressed(1)"><p id="daysHidde1">{{ jour1 }}</p></td>
+                                        <td id = "jour2" ng-click="jourPressed(2)"><p id="daysHidde2">{{ jour2 }}</p></td>
+                                        <td id = "jour3" ng-click="jourPressed(3)"><p id="daysHidde3">{{ jour3 }}</p></td>
+                                        <td id = "jour4" ng-click="jourPressed(4)"><p id="daysHidde4">{{ jour4 }}</p></td>
+                                        <td id = "jour5" ng-click="jourPressed(5)"><p id="daysHidde5">{{ jour5 }}</p></td>
+                                        <td id = "jour6" ng-click="jourPressed(6)"><p id="daysHidde6">{{ jour6 }}</p></td>
+                                        <td id = "jour7" ng-click="jourPressed(7)"><p>{{ jour7 }}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td id = "jour8" ng-click="jourPressed(8)">{{ jour8 }}</td>
+                                        <td id = "jour9" ng-click="jourPressed(9)">{{ jour9 }}</td>
+                                        <td id = "jour10" ng-click="jourPressed(10)">{{ jour10 }}</td>
+                                        <td id= "jour11" ng-click="jourPressed(11)">{{ jour11 }}</td>
+                                        <td id ="jour12" ng-click="jourPressed(12)">{{ jour12 }}</td>
+                                        <td id ="jour13" ng-click="jourPressed(13)">{{ jour13 }}</td>
+                                        <td id="jour14" ng-click="jourPressed(14)">{{ jour14 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td id="jour15" ng-click="jourPressed(15)">{{ jour15 }}</td>
+                                        <td id="jour16" ng-click="jourPressed(16)">{{ jour16 }}</td>
+                                        <td id="jour17" ng-click="jourPressed(17)">{{ jour17 }}</td>
+                                        <td id="jour18" ng-click="jourPressed(18)">{{ jour18 }}</td>
+                                        <td id="jour19" ng-click="jourPressed(19)">{{ jour19 }}</td>
+                                        <td id="jour20" ng-click="jourPressed(20)">{{ jour20 }}</td>
+                                        <td id="jour21" ng-click="jourPressed(21)">{{ jour21 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td id = "jour22" ng-click="jourPressed(22)">{{ jour22 }}</td>
+                                        <td id="jour23" ng-click="jourPressed(23)">{{ jour23 }}</td>
+                                        <td id="jour24" ng-click="jourPressed(24)">{{ jour24 }}</td>
+                                        <td id="jour25" ng-click="jourPressed(25)">{{ jour25 }}</td>
+                                        <td id="jour27" ng-click="jourPressed(26)">{{ jour26 }}</td>
+                                        <td id="jour28" ng-click="jourPressed(27)">{{ jour27 }}</td>
+                                        <td id="jour29" ng-click="jourPressed(28)">{{ jour28 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td id = "jour22" ng-click="jourPressed(29)">{{ jour29 }}</td>
+                                        <td id="jour23" ng-click="jourPressed(30)">{{ jour30 }}</td>
+                                        <td id="jour24" ng-click="jourPressed(31)">{{ jour31 }}</td>
+                                        <td id="jour25" ng-click="jourPressed(32)">{{ jour32 }}</td>
+                                        <td id="jour27" ng-click="jourPressed(33)">{{ jour33 }}</td>
+                                        <td id="jour28" ng-click="jourPressed(34)">{{ jour34 }}</td>
+                                        <td id="jour29" ng-click="jourPressed(35)">{{ jour35 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td id="jour22" ng-click="jourPressed(36)"><p id="lastDayHide7">{{ jour36 }}</p></td>
+                                        <td id="jour23" ng-click="jourPressed(37)"><p id="lastDayHide6">{{ jour37 }}</p></td>
+                                        <td id="jour24" ng-click="jourPressed(38)"><p id="lastDayHide5">{{ jour38 }}</p></td>
+                                        <td id="jour25" ng-click="jourPressed(39)"><p id="lastDayHide4">{{ jour39 }}</p></td>
+                                        <td id="jour27" ng-click="jourPressed(40)"><p id="lastDayHide3">{{ jour40 }}</p></td>
+                                        <td id="jour28" ng-click="jourPressed(41)"><p id="lastDayHide2">{{ jour41 }}</p></td>
+                                        <td id="jour29" ng-click="jourPressed(42)"><p id="lastDayHide1">{{ jour42 }}</p></td>
+                                    </tr>
+                                    </tbody>
+                                    <thead>
+                                    <tr>
+                                        <th>Semaine n°</th>
+                                        <th>Lundi</th>
+                                        <th>Mardi</th>
+                                        <th>Mercredi</th>
+                                        <th>Jeudi</th>
+                                        <th>Vendredi</th>
+                                        <th>Samedi</th>
+                                        <th>Dimanche</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <div id="modalEvent" class="modalEvent">
+                <form>
+                    <textarea id="eventDescription" ng-model="textareaModal" class="form-control" rows="5"></textarea>
+                    <button id="eventButton" ng-click="addEvent(dayID, textareaModal)" class="btn btn-default">Ajouter un évenement.</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+        <footer id ="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="text-success">Trou du chients</h1>
+                        <p class="text-success">Bienvenu sur le site web de la pêcherie du trou des chiens,<br /> vous pourrez ici découvrir les différents services qu'on vous propose.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;La pêche, plus qu'une passion.</p>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1858.956880970786!2d5.347174628696751!3d50.03032346444617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c02dc5abff7c75%3A0x16dd2748d305dd24!2sRue+de+Lorcy%2C+6870+Saint-Hubert!5e0!3m2!1sfr!2sbe!4v1442655804150" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-12 text-left">
+                                <h1 class="text-success">Informations complémentaires</h1>
+                                <p><span class="text-success">Téléphonne:</span> 0467/32.54.12</p>
+                                <p><span class="text-success">Adresse:</span> Rue de Lorcy, 6870 Saint-Hubert</p>
+                            </div>
+                            <div class="col-md-12 text-left">
+                                <h1 class="text-success">Plan du site</h1>
+                                <a href="#home" class="activeItem">Accueil</p>
+                                <a href="views/galerie.html">Galerie de photo</p>
+                                <a href="#event">Evenements</p>
+                                <a href="#contact">contact</p>
+                            </div>
+                            <br />
+                            <div class="col-md-12 text-left">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-center text-inverse"><a href="http://www.harmony-dev.biz">Devlopped by Harmony-Dev.</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Mon slider qui se trouve dans le header -->
+        <script>
+            $(function() {
+                $('.banner').unslider();
+            });
+        </script>
+        <!-- fin du slider -->
+        <script type="text/javascript" src="js/scroller.js"></script>
+    </body>
+</html>

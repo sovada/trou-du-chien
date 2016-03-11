@@ -1,0 +1,25 @@
+/*---------------------------------------------------------------------------------------------------------*/
+html{}
+.min-height{min-height: 810px;}
+footer{color: rgba(119, 119, 119, 1); background-color: rgba(248, 248, 248, 1);outline: solid 1px lightgray;height:auto;margin-top:25px;}
+.banner { position: relative; overflow: auto;height:500px; background-color:lightgray;margin-left:-50px;margin-bottom:25px;margin-top:-20px;}
+.banner li { list-style: none; }
+.banner ul li { float: left; height:500px;}
+article{margin-top:-20px;}
+.sliderTexte{background-color:rgba(0, 0, 0, 0.4);margin :0;padding:1.5%; text-align:center;margin-top:350px; color:white;font-size:15px;}
+.imgProfile{width:150px; height:150px;}
+
+#modal{width: 50%; height:50%; background-color:rgba(0, 0, 0, 0.80);margin-left:24.999999%;margin-top:15%;border:5px black solid;}
+#modal {transition: opacity 2s linear; -moz-transition: opacity 2s linear;-webkit-transition: opacity 2s linear;}
+#modal form{margin-left: 15%; margin-right: 15%;margin-top:20%;}
+#modal form input{display:block;}
+#modal form input{width: 100%;margin-bottom: 1.5px;}
+#modal form button {width: 100%;margin-top:25px;}
+#modal form #eventDescription {height: 100px;width:100%;}
+
+.daysHide {display:none;}
+
+.activeItem {color:rgb(104, 163, 224)!important;}
+.galerieController {text-align:center!important;}
+
+#addPhoto {margin-top:2%;}
